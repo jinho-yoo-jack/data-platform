@@ -5,4 +5,4 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-rootProject.name = "kcp-data-kafka"
+rootProject.name = "kcp-data-platform"

@@ -1,4 +1,4 @@
-package kcp.data.kafka;
+package kcp.data;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

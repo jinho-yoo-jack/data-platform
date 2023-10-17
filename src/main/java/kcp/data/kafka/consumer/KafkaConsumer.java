@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @Service
-public class Consumer {
+public class KafkaConsumer {
 
     @KafkaListener(topics = "users", groupId = "group_id")
     public void consume(String message) throws IOException {
@@ -14,3 +14,14 @@ public class Consumer {
     }
 
 }
+
+
+// source data
+// oracle, mysql, tomcat server occur logging
+// oracle -> PG Table number 1,000
+
+
+// spark opensource
+
+
+// Hadoop -> HDFS FileSystem save

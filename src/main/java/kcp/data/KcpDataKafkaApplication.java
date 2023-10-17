@@ -1,4 +1,4 @@
-package kcp.data.kafka;
+package kcp.data;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
