@@ -21,5 +21,4 @@ public class SparkConfig {
             .config("spark.sql.parquet.compression.codec", "snappy")
             .getOrCreate();
     }
-
 }

@@ -24,13 +24,14 @@ public class ExtractService {
     private final SparkConfig sparkConfig;
     private final HadoopConfig hadoopConfig;
 
-    @Value("${jdbc:oracle:thin:@localhost}")
+    @Value("${spring.datasource.url}")
     private String dbUrl;
+    @Value("${hadoop.hdfs.url}")
     private String hdfsUrl;
 
     public RespSrcTableExtract getSourceData(ReqSrcTableExtract reqMessage) throws IOException, URISyntaxException {
         Dataset<Row> rows = getTableData(reqMessage);
-        String path = "/tmp/" + reqMessage.getTableName();
+        String path = reqMessage.getPath();
         saveToHdfs(rows, path);
         if(fileExists(path))
             return new RespSrcTableExtract(reqMessage.getTableName(), path, true, LocalDateTime.now());
@@ -55,7 +56,7 @@ public class ExtractService {
     }
 
     public void saveToHdfs(Dataset<Row> rows, String path){
-        rows.write().format("parquet").mode("overwrite").save(path);
+        rows.write().format("parquet").mode("overwrite").save(hdfsUrl+path);
     }
 
     public boolean fileExists(String hdfsPath) throws URISyntaxException, IOException {
